@@ -13,6 +13,10 @@ class StateTest extends WordSpecLike with Matchers {
       State.get.eval(10) shouldBe 10
     }
 
+    "modify wors" in {
+      State.modify[Int](_ * 2).run(10) shouldBe (20, ())
+    }
+
     "fmap works" in {
       { State[String, Int]({s => ("extended " + s, 10)}) fmap {x:Int => x + 20} }.run("state") shouldBe ("extended state", 30)
     }

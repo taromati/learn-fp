@@ -17,6 +17,13 @@ class MaybeTest extends WordSpecLike with Matchers {
           x <- 10.pure
           y <- just(20)
         } yield { x + y }
+
+//        10.pure.flatMap { x =>
+//          just(20).map { y =>
+//            x + y
+//          }
+//        }
+
       } shouldBe just(30)
     }
 
